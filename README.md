@@ -1,4 +1,5 @@
 # kaggle-and-friends
+
 Kaggle, Data Science, Machine Learning, all the trials and tribulations in one simple repo!
 
 YOU WILL NEED quite a lot of things, but とりあえず just
@@ -9,3 +10,9 @@ YOU WILL NEED quite a lot of things, but とりあえず just
 4) Start jupyter notepad with `jupyter notebook`
 
 So easy but it might take time sometimes you know!!
+
+SEE ALSO:
+
+<https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/>  
+<https://jupyter-notebook.readthedocs.io/en/stable/>
+<https://www.kaggle.com/jeffd23/scikit-learn-ml-from-start-to-finish>
