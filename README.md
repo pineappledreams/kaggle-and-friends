@@ -11,6 +11,8 @@ YOU WILL NEED quite a lot of things, but とりあえず just
 
 So easy but it might take time sometimes you know!!
 
+ pip install numpy pandas matplotlib jupyterlab scipy scikit-learn xgboost
+
 SEE ALSO:
 
 <https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/>  
