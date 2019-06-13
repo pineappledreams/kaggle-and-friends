@@ -18,17 +18,3 @@ SEE ALSO:
 <https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/>  
 <https://jupyter-notebook.readthedocs.io/en/stable/>
 <https://www.kaggle.com/jeffd23/scikit-learn-ml-from-start-to-finish>
-
-森田
-
-山崎さん
-
-田阪さん
-
-児玉さん
-
-渡辺さん
-
-和田さん
-
-エリックさん
