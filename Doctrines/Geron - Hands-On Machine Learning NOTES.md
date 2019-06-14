@@ -187,3 +187,65 @@ So you need to choose where you apply batch learning. Obviously
 don't use it on your iPhone or smth lmao.  
 
 ### Online learning
+
+Online Learning means that you train your system by feeding it data instances  
+individually or in bite-sized mini-batches. Learning is fast and cheap,  
+so it can learn on the fly.  
+
+Online learning is great for things that NEED to learn on the fly...  
+But more importantly - it works for when you have limited computing resources.  
+Once and online learning system has learned about your data, it does not need them anymore  
+so you can just discard them (unless you need to roll back/replay data).  
+
+It also works when you need to learn out-of-core (out of main memory), so you learn  
+about the big thing one batch at a time. It breaks up the huge 10TB database into  
+idk, 100mb chunks and it learns 100mb at a time.  
+
+BTW: **out-of-core is usually done offline (not on a live system), so saying  
+it's online is confusing. Use Incremental Learning word instead.**
+
+One important parameter on your online learning systems is how fast can they  
+adapt to changing data - what is the *learning rate* of the system.  
+High learning rate = adapts quickly to changes, but forgets learned rules.  
+Low learning rate = intertia is high, but less sensitive to change.  
+
+The big challenge for online learning system is when you get bad data fed into the system.  
+You will see a drop in performance which might linger for a long time and on a live  
+system your clients will notice. For example - your search engine gets SPAMMED  
+with huge amounts of crap to rank high on the results. Or a malfunctioning sensor  
+is feeding crap into the system.  
+
+You will need to monitor your system, switch learning off in these cases and  
+maybe even revert to a previous, more fit state.  
+Also react to abnormal data by using anomaly detection algorithms.  
+
+## Instance-based learning VS Model-based learning
+
+The 3rd way to seperate your systems is by how they generalize.  
+Most ML tasks are about making predictions, which means that given a number  
+of training examples, it can generalize to the examples never seen before.  
+Having a good performance measure on the training data is good, but insufficient.  
+The main goal is to use it IRL.  
+
+### Instance-based learning  
+
+The most trivial of the learning - it learns ALL the stuff that it has seen,  
+then automatically flags exact same things it has seen.  
+You make it better by giving it the ability to find similar things to other  
+instances as well by the measure of similarity.  
+
+## Model-based learning
+
+You build a model out of your examples, then use that model to make predictions.  
+
+For example - does having more money make you happier? OECD data, Happiness data,  
+put em together and see. Well, there seems to be a trend, but it's noisy.  
+It looks like it goes more or less linearly upwards. So you model life satisfaction  
+as a linear function to GDP per capita.  
+So you select linear model of life satisfaction with just one attribute - GDP per capita.  
+
+life_satisfaction = theta0 + theta1x * GDP_per_capita
+
+The model has two parameters - theta 0 and theta 1.
+(Theta is frequently used to represent model parameters)  
+
