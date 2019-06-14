@@ -201,7 +201,7 @@ It also works when you need to learn out-of-core (out of main memory), so you le
 about the big thing one batch at a time. It breaks up the huge 10TB database into  
 idk, 100mb chunks and it learns 100mb at a time.  
 
-BTW: **out-of-core is usually done offline (not on a live system), so saying  
+FYI: **out-of-core is usually done offline (not on a live system), so saying  
 it's online is confusing. Use Incremental Learning word instead.**
 
 One important parameter on your online learning systems is how fast can they  
@@ -249,3 +249,120 @@ life_satisfaction = theta0 + theta1x * GDP_per_capita
 The model has two parameters - theta 0 and theta 1.
 (Theta is frequently used to represent model parameters)  
 
+So you've got two things you gotta figure out - theta0 and theta1.  
+How can you know which values will make your model perform best?  
+You will need to specificy a performance measure.  
+Utility function (Fitness function) - How good the modle is.
+Cost function - How bad it is.  
+
+For linear regression problems, people typically use a cost function that measures  
+the distance between linear predictions and training examples. You gotta minimize the  
+distance.  
+
+So that's where the linear regression algorithm comes it -  you feed it examples and  
+it will come with the parameters which makes your linear model fit best to your data.  
+This is called training the model.  
+
+NOTE: all code examples are over here, so take a gander!!
+
+<https://github.com/ageron/handson-ml2>
+
+Replacing the Linear Regression model with k-Nearest Neighbors
+regression in the previous code is as simple as replacing these two
+lines:  
+
+```python
+import sklearn.linear_model
+model = sklearn.linear_model.LinearRegression()
+```
+
+with these two:
+
+```python
+import sklearn.neighbors
+model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+```
+
+If your model can make good predictions, then great. But usually you will  
+need more attributes, get more/better data or select a better model  
+like a Polynomal Regression Model.  
+
+Summary:  
+
+1. Study the data
+2. Select a model
+3. Train the algo to minimize cost function
+4. Apply model to make predictions on new cases (aka. **inference**)
+
+This is the typical life cycle. But this is the typical *good* day in ML.  
+Remember the Murphy's law - if it can break, then it will break.  
+
+## The Main Challenges of Machine Learning
+
+Since your main work is going to be selecting a learning algo and train it on  
+the data, you will hear people complain about bad algos or bad data.  
+
+**BAD DATA** can be all sorts - insufficient, biased, nonrepresentative, poor quality,  
+irrevelant,  overfit, underfit or just plain wrong, false data.  
+
+**Insufficient data** - just like you point an apple to a child, you do the same for computers.  
+Except computers need to see like a million of apples before it finally understand  
+ah, an apple. OK.  Then it still mixes up a pear (nashi) with an apple.  
+
+In 2001, Microsoft nerds Michele Banko and Eric Brill found that loads of data  
+can make algos perform better - but let's be honest - unless we got access to Facebook  
+level data, you will not be able to do BIG DATA.  
+
+**Nonrepresentative Training Data** - remember that GDP and Happiness linear function?  
+Did you know it didn't have countries like Brazil, Norway & Luxembourg on it, which TOTALLY  
+skewed your model and blew it apart.  
+
+If your sample set is too small - it will have sampling noise -  
+nonrepresentative data as a result of chance!  
+
+If it's too big, then it can be sample biased aka. the collection was wrong.  
+For example - if you write to 1000 people and ask them about a heated topic and  
+all of them happen to be in an extreme clique, you won't be able to make an generalization  
+for the general population.  
+
+Or if you use Youtube to make a Shazam clone, you might end up with biased music  
+which is "hip" in your local area or whatever Youtube is being paid to promote to  
+the general ilk. (For example if you write in "rock" into the searchbar  
+you will get boomer rock music in USA but OK ONE ROCK in Japan. Well..  
+Not me at least - but if I were a normie, I would get OK ONE ROCK here.)
+
+**Poor Quality Data** - Full of errors, outliers and noise - you will need  
+to spend your time to *clean your data*. If you were a 9-5 Data Science Person,  
+this is where the 90% of the work is.  (The rest of the 10% is the other 90%)  
+
+If you got outliers - you can discard or fix the data.  
+If you got missing features - you can either ignore the attribute altogether,  
+fill in with the missing value, ignore those instances only, or train a model  
+with and without the attribute!  
+
+**Irrevelant features** - Garbage in, garbage out! If you put too much crap into  
+your training data, then boom, no wonder you get crap predictions as well.  
+The critical part of your success story is coming up with a good set of features  
+to train on. This is called *feature engineering* - a big word you will hear a lot.  
+
+Feature engineering is done with:  
+    * Feature selection - choosing the most useful attributes to train on.  
+    * Feature extraction - combining existing attributes to produce a more useful one  
+    * Creating new features by gathering new data.  
+
+Let's also talk about **BAD ALGOS**.  
+
+**Overfitting** - You use ea polynomal life satisfaction model and it overfits THE HECK  
+out of the thing. It notices crap like countries with a w in it has high life satisfaction.  
+New Zealand, Sweden, Switzerland..  Now how about countries like Rwanda and Zimbabwe?  
+How about Wongolia or Whina?
+
+Overfitting happens when the model is too complex relative to the amount and  
+noisiness of your training data.  Possible solutions:
+
+* Simplify the model by selecting the one with fewer parameters or  
+  reducing number of attributes or constraining the data..  
+* Gather more training data
+* Reduce noise in the training data.  
+
+Constraining a model to make it simpler is called **regularization**
